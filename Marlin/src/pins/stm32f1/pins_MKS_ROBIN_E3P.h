@@ -67,6 +67,10 @@
 //
 #define SERVO0_PIN                          PA8   // Enable BLTOUCH
 
+#ifndef Z_MIN_PROBE_PIN
+  #define Z_MIN_PROBE_PIN                   PC4   // BLTouch IN
+#endif
+
 //
 // Limit Switches
 //
