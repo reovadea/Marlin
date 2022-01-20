@@ -367,6 +367,33 @@
   #define BEEPER_PIN                        PC5
 #endif
 
+#if EITHER(HAS_DWIN_E3V2, IS_DWIN_MARLINUI)
+
+/**
+ *        ------
+ *       |12  11|               ------                ------
+ *   ENT |10  9 | A            |10  9 |              |10  9 |
+ *    TX | 8  7 | RX      (RX) | 8  7 | (TX)      RX | 8  7 | TX
+ *  BEEP | 6  5 | B      (ENT)   6  5 | (BEEP)  ENT || 6  5 | BEEP
+ *   GND | 4  3 |          (B) | 4  3 | (A)        B | 4  3 | A
+ *   VCC | 2  1 |          GND | 2  1 | VCC      GND | 2  1 | VCC
+ *        ------                ------                ------
+ *        EXT-IO                  DWIN               DWIN (plug)
+ *
+ * All pins are labeled as printed on DWIN PCB. Connect TX-TX, A-A and so on.
+ */
+
+  //#error "Ender-3 V2 display requires a custom cable, see diagram above this line. Comment out this line to continue."
+
+  #define BTN_ENC                           PA1
+  #define BTN_EN1                           PC2
+  #define BTN_EN2                           PB0
+
+  #ifndef BEEPER_PIN
+    #define BEEPER_PIN                      PE7
+  #endif
+#endif
+
 #if ENABLED(SPEAKER) && BEEPER_PIN == PC5
   #error "MKS Robin nano default BEEPER_PIN is not a SPEAKER."
 #endif

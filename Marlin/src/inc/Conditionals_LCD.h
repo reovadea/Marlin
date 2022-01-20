@@ -511,6 +511,8 @@
   #ifndef LCD_SERIAL_PORT
     #if MB(BTT_SKR_MINI_E3_V1_0, BTT_SKR_MINI_E3_V1_2, BTT_SKR_MINI_E3_V2_0, BTT_SKR_E3_TURBO)
       #define LCD_SERIAL_PORT 1
+    #elif MB(MKS_ROBIN_E3P)
+      #define LCD_SERIAL_PORT 2
     #else
       #define LCD_SERIAL_PORT 3 // Creality 4.x board
     #endif
